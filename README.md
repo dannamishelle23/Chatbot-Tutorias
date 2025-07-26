@@ -50,3 +50,15 @@ Ejecutar el siguiente comando: python -m venv chatbot_env
 - Ejecutar el siguiente comando: pip install -r requirements.txt
 
 Nota: Para instalar tensorflow, se necesita Python 3.9 - 3.10 - 3.11 o 3.12, dado que Tensorflow no es compatible con Python 3.13
+
+### 5. Ejecutar el archivo entrenamiento_modelo.py 
+
+- Ejecutar el comando: python entrenamiento_modelo.py
+- Una vez entrenado el modelo, se recorren todas las épocas mostrando la precisión y la pérdida. Además, se generan las gráficas.
+- Al final se guardará el modelo entrenado en formato .keras y se generan automáticamente dos archivos: tokenizer.pickle y labels.pickle
+
+### 6. Ejecutar el chatbot con Streamlit
+
+- Ejecutar el comando: streamlit run app.py y aparece el siguiente mensaje:
+
+<img width="730" height="128" alt="image" src="https://github.com/user-attachments/assets/56ca9449-dd6a-4336-8082-50c0dd837bef" />
