@@ -95,7 +95,7 @@
     {
       "tag": "no_entiendo",
       "patterns": [
-        "No entiendo", "No entendi", "¿Puedes repetir?", "No capté eso", "No sé qué hacer",
+        "No entiendo", "Mmmm no me quedó claro", "No entendi", "¿Puedes repetir?", "No capté eso", "No sé qué hacer",
         "¿Qué significa eso?", "No comprendo", "Explícalo otra vez"
       ],
       "responses": [
