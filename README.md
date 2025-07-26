@@ -62,3 +62,5 @@ Nota: Para instalar tensorflow, se necesita Python 3.9 - 3.10 - 3.11 o 3.12, dad
 - Ejecutar el comando: streamlit run app.py y aparece el siguiente mensaje:
 
 <img width="730" height="128" alt="image" src="https://github.com/user-attachments/assets/56ca9449-dd6a-4336-8082-50c0dd837bef" />
+
+Esto indica que Streamlit está corriendo en el puerto 8501
