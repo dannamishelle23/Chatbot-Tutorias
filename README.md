@@ -11,7 +11,7 @@ de gestión de tutorías de la ESFOT.
 - Entrenamiento de modelo usando `intents.json` con Keras
 - Configuración de parámetros de entrenamiento
 - Visualización de métricas
-- Interfaz gráfica interactiva con Streamlit
+- Interfaz gráfica interactiva con Streamlit para que el usuario pueda registrarse e iniciar sesión y tener su chatbot personalizado.
 - Respuestas automáticas a dudas de los usuarios.
 - Posibilidad de agregar nuevas intenciones o reentrenar el modelo
 
