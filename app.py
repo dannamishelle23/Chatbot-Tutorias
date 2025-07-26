@@ -11,9 +11,13 @@ import tensorflow as tf
 import re
 
 st.set_page_config(layout="wide")
+
 #Cargar el archivo CSS
-with open('style.css') as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+with open("style.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+#Mostrar el logo arriba
+st.image("images/logo_esfot.png", width=100)  # Puedes ajustar el ancho
 
 #Carga modelo y datos
 model = tf.keras.models.load_model("chatbot_modelo.keras")
@@ -57,8 +61,8 @@ def get_response(msg, rol_usuario):
                     return "No estás autorizado para esta acción."
     return "No entendí tu pregunta. ¿Puedes intentarlo de otra forma?"
 
-# --- Interfaz Streamlit ---
-st.title("Tutorías ESFOT Chatbot")
+#Interfaz de Streamlit para el usuario
+st.title("Chatbot para Tutorías ESFOT")
 
 # Inicializar estados
 for var in ["estado", "nombre_usuario", "rol_usuario", "correo_usuario", "chat", "mostrar_menu"]:
