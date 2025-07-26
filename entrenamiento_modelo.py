@@ -1,83 +1,106 @@
 import json
 import numpy as np
 import random
-import tensorflow as tf
-from sklearn.preprocessing import LabelEncoder
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
+from nltk.stem import PorterStemmer
+import string
 
-#Cargar el archivo intents.json
-with open("intents.json", encoding="utf-8") as archivo:
-    datos = json.load(archivo)
+#Cargar archivo intents.json
+with open("intents.json", encoding='utf-8') as file:
+    data = json.load(file)
 
-#Extraer datos
+stemmer = PorterStemmer()
+
+def tokenize(text):
+    text = text.lower()
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    return text.split()
+
+#Listas para almacenar datos
+all_words = []
 tags = []
-entradas = []
-respuestas = {}
+xy = []
 
-for intent in datos["intents"]:
+# Procesar intents.json
+for intent in data["intents"]:
+    tag = intent["tag"]
+    tags.append(tag)
     for pattern in intent["patterns"]:
-        entradas.append(pattern)
-        tags.append(intent["tag"])
-    respuestas[intent["tag"]] = intent["responses"]
+        words = tokenize(pattern)
+        all_words.extend(words)  # Acumular palabras para el vocabulario
+        xy.append((words, tag))  # Guardar pares (tokens, etiqueta)
 
-#Codificar etiquetas
-lbl_encoder = LabelEncoder()
-lbl_encoder.fit(tags)
-etiquetas = lbl_encoder.transform(tags)
-
-#Tokenizar texto
-tokenizer = Tokenizer(num_words=1000, oov_token="<OOV>")
-tokenizer.fit_on_texts(entradas)
-secuencias = tokenizer.texts_to_sequences(entradas)
-padded = pad_sequences(secuencias, padding="post")
-
-#Crear modelo
-modelo = Sequential()
-modelo.add(Dense(128, input_shape=(padded.shape[1],), activation='relu'))
-modelo.add(Dropout(0.5))
-modelo.add(Dense(64, activation='relu'))
-modelo.add(Dropout(0.3))
-modelo.add(Dense(len(set(tags)), activation='softmax'))
-
-modelo.compile(loss='sparse_categorical_crossentropy', optimizer=Adam(learning_rate=0.01), metrics=['accuracy'])
+# Filtrar palabras ignoradas
+ignore_words = ["?", "!", ".", ","]
+all_words = [stemmer.stem(w) for w in all_words if w not in ignore_words]
+all_words = sorted(set(all_words))
+tags = sorted(set(tags))
 
 #Entrenar el modelo
-x_train, x_val, y_train, y_val = train_test_split(padded, etiquetas, test_size=0.2, random_state=42)
-history = modelo.fit(x_train, y_train, 
-                    validation_data=(x_val, y_val),
-                    epochs=100, 
-                    verbose=1)
+X_train = []
+y_train = []
 
-#Guardar modelo y utilidades
-modelo.save("chatbot_modelo.keras", save_format="keras")              #Guardar el modelo en formato .keras
-with open("tokenizer.pickle", "wb") as handle:
-    pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
-with open("labels.pickle", "wb") as enc:
-    pickle.dump(lbl_encoder, enc, protocol=pickle.HIGHEST_PROTOCOL)
+for pattern_words, tag in xy:
+    bag = [0] * len(all_words)
+    stemmed_words = [stemmer.stem(w.lower()) for w in pattern_words]
+    for sw in stemmed_words:
+        for i, w in enumerate(all_words):
+            if w == sw:
+                bag[i] = 1
+    X_train.append(bag)
 
-print("Modelo guardado.")
+    label = tags.index(tag)
+    y_train.append(label)
 
-#Graficar la Precisión
-plt.plot(history.history['accuracy'], label='Entrenamiento')
-plt.plot(history.history['val_accuracy'], label='Validación')
-plt.title('Precisión del modelo')
+X_train = np.array(X_train)
+y_train = np.array(y_train)
+
+#Guardar datos necesarios
+with open("chatbot_data.pkl", "wb") as f:
+    pickle.dump((all_words, tags, X_train, y_train), f)
+
+#Crear el modelo
+model = Sequential()
+model.add(Dense(128, input_shape=(len(X_train[0]),), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(tags), activation='softmax'))
+
+model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+#Entrenar el modelo
+history = model.fit(X_train, y_train, epochs=100, batch_size=8, verbose=1)
+
+#Guardar el modelo
+model.save("chatbot_modelo.keras")
+print("Modelo guardado con éxito: chatbot_modelo.keras")
+
+#Graficar precisión y pérdida
+plt.figure(figsize=(12, 4))
+
+plt.subplot(1, 2, 1)
+plt.plot(history.history['accuracy'], label='Precisión')
+plt.title('Precisión durante el entrenamiento')
 plt.xlabel('Épocas')
 plt.ylabel('Precisión')
 plt.legend()
-plt.show()
+plt.grid(True)
 
-#Graficar la Pérdida
-plt.plot(history.history['loss'], label='Entrenamiento')
-plt.plot(history.history['val_loss'], label='Validación')
-plt.title('Pérdida del modelo')
+plt.subplot(1, 2, 2)
+plt.plot(history.history['loss'], label='Pérdida', color='red')
+plt.title('Pérdida durante el entrenamiento')
 plt.xlabel('Épocas')
 plt.ylabel('Pérdida')
 plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+#Guardar las graficas en un archivo png
+plt.savefig('chatbot_entrenamiento.png')
 plt.show()
