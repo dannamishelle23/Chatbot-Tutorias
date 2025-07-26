@@ -2,106 +2,158 @@
   "intents": [
     {
       "tag": "saludo",
-      "patterns": ["Hola!", "¿Qué tal?", "Buenas", "Hey", "Mucho gusto!", "Buenas tardes", "Hi"],
-      "responses": ["¡Hola de nuevo!", "¡Hola! ¿En qué te puedo ayudar?", "Hola 😊"]
+      "patterns": ["Hola", "Quien eres?", "Buenos días", "Buenas tardes", "Qué tal", "Hey"],
+      "responses": ["Soy un bot diseñado para asistir a estudiantes de la ESFOT. ¿En qué puedo ayudarte?"],
+      "rol": "Todos"
     },
     {
       "tag": "despedida",
-      "patterns": ["Adiós", "Hasta luego", "Nos vemos", "Chao"],
-      "responses": ["¡Hasta luego!", "Nos vemos pronto", "Cuídate mucho"]
+      "patterns": ["Adiós", "Nos vemos", "Hasta luego", "Chao", "Bye"],
+      "responses": ["Gracias por usar la plataforma! Cuídate!"],
+      "rol": "Todos"
     },
     {
       "tag": "gracias",
-      "patterns": ["Gracias", "Muchas gracias", "Te lo agradezco", "Me ayudaste mucho, gracias"],
-      "responses": ["De nada! Necesitas ayuda con algo más?", "De nada, si tienes otra duda, con gusto te ayudaré", "¡Con gusto!", "Para eso estoy", "Me alegra haberte ayudado!", "Me alegra haber sido de mucha ayuda!"]
+      "patterns": ["Gracias", "Muchas gracias", "Te lo agradezco"],
+      "responses": ["¡Con gusto! Estoy aquí para ayudarte. ¿Qué más puedo hacer por ti?"],
+      "rol": "Todos"
+    },
+    {
+      "tag": "actualizar_perfil",
+      "patterns": ["Actualizar perfil","Quiero actualizar mis datos personales", "Quiero cambiar mi información", "Editar mi cuenta"],
+      "responses": ["Claro, puedes actualizar tu perfil desde tu panel de usuario en la sección Mi Perfil ----> Datos Personales ----> Actualizar datos"],
+      "rol": "Todos"
+    },
+    {
+      "tag": "actualizar_contraseña",
+      "patterns": ["Cambiar contraseña", "Actualizar contraseña"],
+      "responses": ["Para actualizar tu contraseña, dirígete a la sección Mi Perfil ----> Datos Personales -----> Contraseña ----> Actualizar "],
+      "rol": "Todos"
+    },
+    {
+      "tag": "ver_tutorias_agendadas",
+      "patterns": ["Ver mis tutorías", "Ver tutorías agendadas", "Tutorías agendadas", "Qué tutorías tengo"],
+      "responses": ["Estas son tus tutorías agendadas. Si deseas reprogramar alguna, también puedo ayudarte."],
+      "rol": "Estudiante"
     },
     {
       "tag": "agendar_tutoria",
-      "patterns": ["Agendar cita", "Agendar tutoria", "¿Cómo agendo una tutoría?", "Quiero agendar una tutoria", "Necesito ayuda con una materia", "Necesito agendar una tutoria"],
-      "responses": ["Con gusto! Para hacerlo debes seleccionar 'Agendar cita', seleccionar un docente y elegir el horario disponible."]
-    },
-    {
-      "tag": "consultar_horario",
-      "patterns": [
-        "¿Me puedes ayudar con los horarios disponibles",
-        "¿Cómo puedo saber cuales son los horarios disponibles para reservar?",
-        "Horarios disponibles",
-        "¿Cuándo puedo tener una tutoría?"
-      ],
-      "responses": [
-        "Puedes ver los horarios disponibles en la seccion 'Ver horarios' y elegir el docente con el que deseas realizar una tutoria",
-        "Hay varios horarios disponibles en los que puedes realizar la tutoría. ¿Con qué docente deseas la tutoría?"
-      ]
-    },
-    {
-      "tag": "cancelar_tutoria",
-      "patterns": [
-        "Quiero cancelar mi tutoría",
-        "Cancelar tutoría",
-        "Cancelar cita",
-        "Que pasa si cancele la cita",
-        "Ya no puedo asistir a la tutoría, ¿puedo reprogramar mi cita?",
-        "Anula mi tutoría",
-        "¿Que pasa si cancelo mi cita minutos antes de la hora reservada?"
-      ],
-      "responses": [
-        "Entendido. Para hacerlo, debes ir a la opcion 'Ver citas' y hacer clic en el botón 'Cancelar cita'",
-        "Claro! En la opción 'Ver citas' puedes reprogramar tu cita en los horarios disponibles.",
-        "De acuerdo, vamos a cancelar tu tutoría! ¿Deseas agendar otra?"
-      ]
+      "patterns": ["Agendar tutoría", "Crear una tutoría", "Quiero una tutoría", "Reservar cita"],
+      "responses": ["Perfecto. ¿Sobre qué materia necesitas tutoría?"],
+      "rol": "Estudiante"
     },
     {
       "tag": "modificar_tutoria",
-      "patterns": [
-        "Quiero reprogramar mi cita",
-        "Reprogramar tutoría",
-        "Quiero cambiar la fecha de mi tutoria",
-        "Como puedo reprogramar mi tutoria?",
-        "Necesito cambiar la fecha de mi tutoria"
-      ],
-      "responses": [
-        "Por supuesto! Debes ir a la opción 'Ver citas' y reagendar tu cita en los horarios disponibles, de acuerdo al docente que hayas elegido!"
-      ]
+      "patterns": ["Quiero reprogramar una tutoría", "Cambiar tutoría", "Modificar cita"],
+      "responses": ["Entendido. Indícame cuál tutoría deseas reprogramar y te ayudaré."],
+      "rol": "Estudiante"
     },
+    {
+      "tag": "cancelar_tutoria",
+      "patterns": ["Cancelar tutoría", "No podré asistir", "Anular cita"],
+      "responses": ["¿Estás seguro de que deseas cancelar tu tutoría?"],
+      "rol": "Estudiante"
+    },
+
+    {
+      "tag": "ver_tutorias_docente",
+      "patterns": ["¿Qué tutorías tengo esta semana?", "Tutorías programadas para mí", "Agenda docente"],
+      "responses": ["Estas son tus tutorías programadas para esta semana. También puedes filtrarlas por día."],
+      "rol": "Docente"
+    },
+    {
+      "tag": "gestion_docentes",
+      "patterns": ["Gestión de docentes"],
+      "responses": ["Entendido. Puedes agregar, ver, actualizar o eliminar un docente. ¿Qué acción deseas realizar?"],
+      "rol": "Administrador"
+    },
+    {
+      "tag": "crear_docente",
+      "patterns": ["Registrar docente", "Crear docentes", "Crear nuevo docente", "Agregar profesor"],
+      "responses": ["Para registrar un docente, completa el formulario desde el panel de administración."],
+      "rol": "Administrador"
+    },
+    {
+      "tag": "ver_docentes",
+      "patterns": ["Ver todos los usuarios", "Lista de usuarios", "Usuarios registrados"],
+      "responses": ["Para ver los usuarios creados en la plataforma solo debes ir a la opción Gestión Usuarios y te aparecerá la lista de los usuarios creados."],
+      "rol": "Administrador"
+    },
+    {
+      "tag": "actualizar_docente",
+      "patterns": ["Actualizar la información del docente", "Modificar datos del docente", "Editar perfil docente"],
+      "responses": ["Puedes actualizar la información del docente desde la sección Gestión de usuarios donde te aparecerá una tabla con todos los docentes creados. Por favor, selecciona un docente y actualiza su información con el botón de 'Actualizar'"],
+      "rol": "Administrador"
+    },
+    {
+      "tag": "eliminar_docente",
+      "patterns": ["Eliminar docente registrado", "Eliminar docente","Cambiar estado de docente de activo a inactivo", "Quitar un docente del sistema", "Deshabilitar un registro"],
+      "responses": ["Puedes eliminar (deshabilitar) el docente creado desde la sección Gestión de usuarios donde te aparecerá una tabla con todos los docentes creados. Por favor, selecciona el docente que deseas eliminar, confirma su eliminación y el registro se eliminará del sistema, pero persistirá en una base de datos."],
+      "rol": "Administrador"
+    },
+    {
+      "tag": "problemas_plataforma",
+      "patterns": ["Tengo un problema con la plataforma", "Algo no funciona", "Me da error"],
+      "responses": ["Lo siento. Por favor describe el problema y lo derivaré al administrador."],
+      "rol": "Todos"
+    },
+    {
+      "tag": "consultar_horario_docente",
+      "patterns": ["¿Cuándo está disponible el profesor?", "Horario del docente", "Ver horarios"],
+      "responses": ["Puedes consultar la disponibilidad de los docentes en la sección de horarios."],
+      "rol": "Estudiante"
+    },
+    {
+      "tag": "consultar_horario_personal",
+      "patterns": ["¿Qué tutorías tengo mañana?", "Mi horario personal", "Tutorías de esta semana"],
+      "responses": ["Estas son tus tutorías programadas para los próximos días."],
+      "rol": "Docente"
+    },
+
     {
       "tag": "tutorias_premium",
       "patterns": [
-        "Que son las tutorias premium?",
-        "Podrias explicarme que son las tutorias premium?", 
-        "¿Como accedo a una tutoria personalizada?",
-        "Si quiero agendar una tutoria premium, tiene algun costo?",
-        "Quiero tutorias privadas",
-        "Quiero agendar una tutoria privada. Tiene algun costo?",
-        "Si, quiero una tutoria premium con mi ingeniero de Calculo"
+        "¿Qué son las tutorías premium?",
+        "Explicame que son las tutorías personalizadas",
+        "¿Cómo puedo agendar una tutoría premium?",
+        "Quiero una tutoría personalizada",
+        "¿Las tutorías premium tienen costo?",
+        "¿Cómo accedo a una tutoría privada?",
+        "Quiero tutorías privadas",
+        "Tutoría premium con profesor"
       ],
       "responses": [
-        "Las tutorias personalizadas o premium sí tienen costo. ¿Deseas agendar una cita?",
-        "Las tutorias premium o personalizadas son cuando el estudiante necesita una reunión más exclusiva con su docente, ya sea para clases privadas o temas personales. ¿Deseas una tutoria premium con algun docente?",
-        "Para una tutoria personalizada, ve a Perfil ---> Tutorias Premium ----> Seleccionar un docente ----> Agendar tutoria personalizada",
-        "Con gusto te puedo ayudar! ¿Con qué docente deseas agendar la cita?",
-        "Perfecto, para hacer una tutoria premium ve a Perfil ---> Tutorias Premium ----> Seleccionar un docente ----> Agendar tutoria personalizada"
-      ]
+        "Las tutorías premium son clases personalizadas que tienen un costo adicional. Son ideales para atención exclusiva y temas específicos.",
+        "Las tutorías personalizadas te permiten tener una sesión exclusiva con tu docente para resolver dudas más a fondo.",
+        "Para agendar una tutoría premium, ve a Perfil > Tutorías Premium, selecciona un docente y elige el horario.",
+        "Sí, las tutorías premium tienen un costo extra debido a su atención personalizada.",
+        "Si quieres una tutoría privada, accede a la opción Tutorías Premium y agenda con tu docente preferido."
+      ],
+      "rol": "Estudiante"
     },
-    {
-      "tag": "dudas",
-      "patterns": [
-        "¿Cuanto tiempo dura una tutoria?"
-      ],
-      "responses": [
-        "Las tutorias duran de 20 a 40 minutos",
-        "Las tutorias duran de 20 a 40 minutos, si quieres alargar el tiempo de la cita, puedes acceder a las tutorias premium"
-      ]
-    },
-    {
-      "tag": "no_entiendo",
-      "patterns": [
-        "No entiendo", "Mmmm no me quedó claro", "No entendi", "¿Puedes repetir?", "No capté eso", "No sé qué hacer",
-        "¿Qué significa eso?", "No comprendo", "Explícalo otra vez"
-      ],
-      "responses": [
-        "No hay problema, ¿puedes reformular tu pregunta?",
-        "Intentaré ayudarte, ¿puedes darme más detalles?"
-      ]
-    }
-  ]
+  {
+    "tag": "si",
+    "patterns": ["Sí", "Si", "Si por favor", "Claro", "Por supuesto", "Ok", "Está bien", "Afirmativo"],
+    "responses": ["Entendido. Procederé."],
+    "rol": "Todos"
+  },
+  {
+    "tag": "no",
+    "patterns": ["No", "Negativo", "Mejor no", "Aún no"],
+    "responses": ["Ok, entendido. No haré cambios. ¿Necesitas ayuda en algo más?"],
+    "rol": "Todos"
+  },
+  {
+    "tag": "no_entiendo",
+    "patterns": ["No entiendo", "No entendi", "No comprendo", "No sé que hacer", "Me perdí"],
+    "responses": ["No te preocupes, intentaré de ayudarte. ¿Puedes darme más detalles?"],
+    "rol": "Todos"
+  },
+  {
+    "tag": "recuperacion_password_estudiante",
+    "patterns": ["Se me olvido la contraseña y no puedo iniciar sesion", "Olvidé mi contraseña", "No me acuerdo mi contraseña"],
+    "responses": ["No te preocupes, puedes generar una contraseña nueva. En la plataforma haz clic en el botón 'Iniiar sesion' ----> ¿Olvidaste tu contraseña? y escribe tu dirección de correo electrónico al que te llegará un enlace de recuperación."],
+    "rol": "Estudiante"
+  }
+]
 }
