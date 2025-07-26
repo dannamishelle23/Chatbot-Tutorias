@@ -28,3 +28,13 @@ chatbot_tutorias/
 - .gitignore                          #Ignora entorno virtual y archivos pesados
 - chatbot_env/                        #(No se sube al repositorio, es el entorno virtual donde se ejecuta la aplicación)
 
+## Instrucciones para Ejecutar 
+
+### 1. Navegar a la ruta donde se encuentra la carpeta chatbot-tutorias
+
+- Ejecutar el terminal como administrador
+- Navegar a la ruta. Ej: cd C:\Users\Usuario\Downloads\chatbot-tutorias
+
+### 2. Crear entorno virtual
+
+Ejecutar el siguiente comando: python -m venv chatbot_env
