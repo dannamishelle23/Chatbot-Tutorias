@@ -1,0 +1,8 @@
+/* style.css */
+.stApp {
+    background-image: url("https://ekosnegocios.com/image/posts/October2023/2G7RVBIoKjrr6t4yLFYJ.jpg"); /* Cargar imagen pública */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
