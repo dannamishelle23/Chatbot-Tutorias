@@ -3,7 +3,7 @@
     {
       "tag": "saludo",
       "patterns": ["Hola!", "¿Qué tal?", "Buenas", "Hey", "Mucho gusto!", "Buenas tardes", "Hi"],
-      "responses": ["Hola, bienvenido a la plataforma de tutorías de la ESFOT, ¿cómo te llamas?"]
+      "responses": ["¡Hola de nuevo!", "¡Hola! ¿En qué te puedo ayudar?", "Hola 😊"]
     },
     {
       "tag": "despedida",
