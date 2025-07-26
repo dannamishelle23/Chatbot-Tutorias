@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Danna Lopez", 
+    "correo": "danna.lopez@epn.edu.ec",
+    "password": "dannamishelle23",
+    "rol": "Estudiante"
+  },
+  {
+    "nombre": "Byron Loarte",
+    "correo": "byron.loarte@epn.edu.ec",
+    "password": "123456",
+    "rol": "Docente"
+  },
+  {
+    "nombre": "Administrador General",
+    "correo": "tutorias.esfot@epn.edu.ec",
+    "password": "admin123",
+    "rol": "Administrador"
+  }
+]
