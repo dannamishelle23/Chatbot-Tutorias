@@ -46,3 +46,7 @@ Ejecutar el siguiente comando: python -m venv chatbot_env
   
 <img width="538" height="58" alt="image" src="https://github.com/user-attachments/assets/a23c03ce-c02f-4e4e-bc09-2f70cd215176" />
 
+### 4. Instalar dependencias
+- Ejecutar el siguiente comando: pip install -r requirements.txt
+
+Nota: Para instalar tensorflow, se necesita Python 3.9 - 3.10 - 3.11 o 3.12, dado que Tensorflow no es compatible con Python 3.13
