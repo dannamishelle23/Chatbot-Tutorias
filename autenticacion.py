@@ -17,7 +17,7 @@ def guardar_usuarios(usuarios):
         json.dump(usuarios, f, indent=4)
 
 #Registrar nuevo usuario
-def registrar_usuario(correo, password, rol):
+def registrar_usuario(nombre, correo, password, rol):
     usuarios = cargar_usuarios()
     #Verificar que no existan espacios en blanco
     if not correo or not password or not rol:
@@ -26,7 +26,10 @@ def registrar_usuario(correo, password, rol):
     if any(u["correo"] == correo for u in usuarios):
         return False  #Usuario ya existe
     #Agregar nuevo usuario
-    usuarios.append({"Correo": correo, "Contraseña": password, "Rol": rol})
+    usuarios.append({"Nombre": nombre,
+                     "Correo": correo, 
+                     "Contraseña": password, 
+                     "Rol": rol})
     guardar_usuarios(usuarios)
     return True
 
@@ -35,5 +38,5 @@ def login_usuario(correo, password):
     usuarios = cargar_usuarios()
     for u in usuarios:
         if u["correo"] == correo and u["password"] == password:
-            return u["rol"]
+            return u           #Retornar todo el diccionario para usar el nombre y rol del usuario
     return None
