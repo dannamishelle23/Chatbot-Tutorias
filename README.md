@@ -57,6 +57,9 @@ Nota: Para instalar tensorflow, se necesita Python 3.9 - 3.10 - 3.11 o 3.12, dad
 - Una vez entrenado el modelo, se recorren todas las épocas mostrando la precisión y la pérdida. Además, se generan las gráficas.
 - Al final se guardará el modelo entrenado en formato .keras y se generan automáticamente dos archivos: tokenizer.pickle y labels.pickle
 
+<img width="615" height="85" alt="image" src="https://github.com/user-attachments/assets/a383af08-6b88-4567-a34c-5447d84c8f0c" />
+
+
 ### 6. Ejecutar el chatbot con Streamlit
 
 - Ejecutar el comando: streamlit run app.py y aparece el siguiente mensaje:
