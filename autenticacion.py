@@ -19,24 +19,33 @@ def guardar_usuarios(usuarios):
 #Registrar nuevo usuario
 def registrar_usuario(nombre, correo, password, rol):
     usuarios = cargar_usuarios()
-    #Verificar que no existan espacios en blanco
-    if not correo or not password or not rol:
-        return False
-    #Verificar si el correo ya está registrado
-    if any(u["correo"] == correo for u in usuarios):
-        return False  #Usuario ya existe
-    #Agregar nuevo usuario
-    usuarios.append({"Nombre": nombre,
-                     "Correo": correo, 
-                     "Contraseña": password, 
-                     "Rol": rol})
-    guardar_usuarios(usuarios)
-    return True
 
-#Login del usuario
+    if not correo or not password or not rol:
+        return {"error": True, "mensaje": "Campos vacíos"}
+
+    #Verificar si el correo ya está registrado
+    for u in usuarios:
+        if u.get("correo") == correo:
+            return {
+                "error": True,
+                "mensaje": "Correo ya registrado",
+                "usuario_existente": u
+            }
+
+    nuevo_usuario = {
+        "nombre": nombre,
+        "correo": correo,
+        "password": password,
+        "rol": rol
+    }
+    usuarios.append(nuevo_usuario)
+    guardar_usuarios(usuarios)
+    return {"error": False}
+
+# Login del usuario
 def login_usuario(correo, password):
     usuarios = cargar_usuarios()
     for u in usuarios:
         if u["correo"] == correo and u["password"] == password:
-            return u           #Retornar todo el diccionario para usar el nombre y rol del usuario
+            return u    #Retorna el dict completo
     return None
