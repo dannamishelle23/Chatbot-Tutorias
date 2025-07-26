@@ -1,0 +1,107 @@
+{
+  "intents": [
+    {
+      "tag": "saludo",
+      "patterns": ["Hola!", "¿Qué tal?", "Buenas", "Hey", "Mucho gusto!", "Buenas tardes", "Hi"],
+      "responses": ["Hola, bienvenido a la plataforma de tutorías de la ESFOT, ¿cómo te llamas?"]
+    },
+    {
+      "tag": "despedida",
+      "patterns": ["Adiós", "Hasta luego", "Nos vemos", "Chao"],
+      "responses": ["¡Hasta luego!", "Nos vemos pronto", "Cuídate mucho"]
+    },
+    {
+      "tag": "gracias",
+      "patterns": ["Gracias", "Muchas gracias", "Te lo agradezco", "Me ayudaste mucho, gracias"],
+      "responses": ["De nada! Necesitas ayuda con algo más?", "De nada, si tienes otra duda, con gusto te ayudaré", "¡Con gusto!", "Para eso estoy", "Me alegra haberte ayudado!", "Me alegra haber sido de mucha ayuda!"]
+    },
+    {
+      "tag": "agendar_tutoria",
+      "patterns": ["Agendar cita", "Agendar tutoria", "¿Cómo agendo una tutoría?", "Quiero agendar una tutoria", "Necesito ayuda con una materia", "Necesito agendar una tutoria"],
+      "responses": ["Con gusto! Para hacerlo debes seleccionar 'Agendar cita', seleccionar un docente y elegir el horario disponible."]
+    },
+    {
+      "tag": "consultar_horario",
+      "patterns": [
+        "¿Me puedes ayudar con los horarios disponibles",
+        "¿Cómo puedo saber cuales son los horarios disponibles para reservar?",
+        "Horarios disponibles",
+        "¿Cuándo puedo tener una tutoría?"
+      ],
+      "responses": [
+        "Puedes ver los horarios disponibles en la seccion 'Ver horarios' y elegir el docente con el que deseas realizar una tutoria",
+        "Hay varios horarios disponibles en los que puedes realizar la tutoría. ¿Con qué docente deseas la tutoría?"
+      ]
+    },
+    {
+      "tag": "cancelar_tutoria",
+      "patterns": [
+        "Quiero cancelar mi tutoría",
+        "Cancelar tutoría",
+        "Cancelar cita",
+        "Que pasa si cancele la cita",
+        "Ya no puedo asistir a la tutoría, ¿puedo reprogramar mi cita?",
+        "Anula mi tutoría",
+        "¿Que pasa si cancelo mi cita minutos antes de la hora reservada?"
+      ],
+      "responses": [
+        "Entendido. Para hacerlo, debes ir a la opcion 'Ver citas' y hacer clic en el botón 'Cancelar cita'",
+        "Claro! En la opción 'Ver citas' puedes reprogramar tu cita en los horarios disponibles.",
+        "De acuerdo, vamos a cancelar tu tutoría! ¿Deseas agendar otra?"
+      ]
+    },
+    {
+      "tag": "modificar_tutoria",
+      "patterns": [
+        "Quiero reprogramar mi cita",
+        "Reprogramar tutoría",
+        "Quiero cambiar la fecha de mi tutoria",
+        "Como puedo reprogramar mi tutoria?",
+        "Necesito cambiar la fecha de mi tutoria"
+      ],
+      "responses": [
+        "Por supuesto! Debes ir a la opción 'Ver citas' y reagendar tu cita en los horarios disponibles, de acuerdo al docente que hayas elegido!"
+      ]
+    },
+    {
+      "tag": "tutorias_premium",
+      "patterns": [
+        "Que son las tutorias premium?",
+        "Podrias explicarme que son las tutorias premium?", 
+        "¿Como accedo a una tutoria personalizada?",
+        "Si quiero agendar una tutoria premium, tiene algun costo?",
+        "Quiero tutorias privadas",
+        "Quiero agendar una tutoria privada. Tiene algun costo?",
+        "Si, quiero una tutoria premium con mi ingeniero de Calculo"
+      ],
+      "responses": [
+        "Las tutorias personalizadas o premium sí tienen costo. ¿Deseas agendar una cita?",
+        "Las tutorias premium o personalizadas son cuando el estudiante necesita una reunión más exclusiva con su docente, ya sea para clases privadas o temas personales. ¿Deseas una tutoria premium con algun docente?",
+        "Para una tutoria personalizada, ve a Perfil ---> Tutorias Premium ----> Seleccionar un docente ----> Agendar tutoria personalizada",
+        "Con gusto te puedo ayudar! ¿Con qué docente deseas agendar la cita?",
+        "Perfecto, para hacer una tutoria premium ve a Perfil ---> Tutorias Premium ----> Seleccionar un docente ----> Agendar tutoria personalizada"
+      ]
+    },
+    {
+      "tag": "dudas",
+      "patterns": [
+        "¿Cuanto tiempo dura una tutoria?"
+      ],
+      "responses": [
+        "Las tutorias duran de 20 a 40 minutos",
+        "Las tutorias duran de 20 a 40 minutos, si quieres alargar el tiempo de la cita, puedes acceder a las tutorias premium"
+      ]
+    },
+    {
+      "tag": "no_entiendo",
+      "patterns": [
+        "No entiendo", "No entendi", "¿Puedes repetir?", "No capté eso", "No sé qué hacer",
+        "¿Qué significa eso?", "No comprendo", "Explícalo otra vez"
+      ],
+      "responses": [
+        "No hay problema, ¿puedes reformular tu pregunta?",
+        "Intentaré ayudarte, ¿puedes darme más detalles?"
+      ]
+    }
+  ]
+}
