@@ -18,6 +18,7 @@ de gestión de tutorías de la ESFOT.
 ## 📁 Estructura del Proyecto
 chatbot_tutorias/
 - app.py                              #Interfaz en Streamlit
+- tutorias.py                         #Codigo para guardar las tutorias en un archivo llamado tutorias.json y llamarlo en app.py
 - entrenamiento_modelo.py             #Entrenamiento del chatbot
 - style.css                           #Archivo para darle estilos a la aplicación en Streamlit
 - chatbot_modelo.keras                #Modelo entrenado
