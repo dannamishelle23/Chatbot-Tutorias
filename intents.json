@@ -70,7 +70,7 @@
     {
       "tag": "crear_docente",
       "patterns": ["Registrar docente", "Crear docentes", "Crear nuevo docente", "Agregar profesor"],
-      "responses": ["Para registrar un docente, completa el formulario desde el panel de administración."],
+      "responses": ["Para registrar un docente, completa el formulario desde el panel de administración. En el dashboard haz clic en Gestión Docentes ----> Agregar nuevo docente e ingresa los datos del docente en el formulario."],
       "rol": "Administrador"
     },
     {
