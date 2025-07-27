@@ -19,6 +19,7 @@ de gestión de tutorías de la ESFOT.
 chatbot_tutorias/
 - app.py                              #Interfaz en Streamlit
 - entrenamiento_modelo.py             #Entrenamiento del chatbot
+- style.css                           #Archivo para darle estilos a la aplicación en Streamlit
 - chatbot_modelo.keras                #Modelo entrenado
 - intents.json                        #Datos de entrenamiento (intenciones y respuestas)
 - usuarios.json                       #Guarda los usuarios registrados para el inicio de sesión
@@ -27,6 +28,8 @@ chatbot_tutorias/
 - requirements.txt                    #Paquetes necesarios 
 - .gitignore                          #Ignora entorno virtual y archivos pesados
 - chatbot_env/                        #(No se sube al repositorio, es el entorno virtual donde se ejecuta la aplicación)
+
+Adicionalmente, dentro del proyecto se crea una carpeta llamada images donde se guarda la imagen de logo para la página.
 
 ## Instrucciones para Ejecutar 
 
