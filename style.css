@@ -1,8 +1,77 @@
-/* style.css */
-.stApp {
-    background-image: url("https://ekosnegocios.com/image/posts/October2023/2G7RVBIoKjrr6t4yLFYJ.jpg"); /* Cargar imagen pública */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+/* Fondo general */
+body, .stApp {
+    background: linear-gradient(to right, #87afad, #a8d3db) !important;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenedor del logo */
+.logo-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del chat */
+.chat-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Burbujas de conversación */
+.chat-bubble {
+    max-width: 80%;
+    padding: 12px 18px;
+    border-radius: 18px;
+    margin: 10px 0;
+    line-height: 1.5;
+    font-size: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Mensaje del bot */
+.bot-message {
+    background-color: #eed5d5;
+    color: #000;
+    align-self: flex-start;
+    border-top-left-radius: 0;
+}
+
+/* Mensaje del usuario */
+.user-message {
+    background-color: #b6cef3;
+    color: #000;
+    align-self: flex-end;
+    border-top-right-radius: 0;
+    margin-left: auto;
+}
+
+/* Estilo para botones */
+button, .stButton button {
+    background-color: #195e32;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover para los botones */
+button:hover, .stButton button:hover {
+    background-color: #388055;
+}
+
+/* Título o encabezado */
+h1, h2, h3, h4 {
+    color: #075e54;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Ajustes extra */
+.stTextInput, .stTextArea {
+    border-radius: 12px !important;
 }
