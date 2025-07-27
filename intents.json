@@ -14,7 +14,7 @@
     },
     {
       "tag": "gracias",
-      "patterns": ["Gracias", "Muchas gracias", "Te lo agradezco"],
+      "patterns": ["Gracias", "Ok", "Ok, thanks", "Thanks", "Ok, gracias", "Muchas gracias", "Te lo agradezco"],
       "responses": ["¡Con gusto! Estoy aquí para ayudarte. ¿Qué más puedo hacer por ti?"],
       "rol": "Todos"
     },
@@ -63,7 +63,7 @@
     },
     {
       "tag": "gestion_docentes",
-      "patterns": ["Gestión de docentes"],
+      "patterns": ["Gestión de docentes", "Quiero administrar los docentes", "Como manejo los docentes?"],
       "responses": ["Entendido. Puedes agregar, ver, actualizar o eliminar un docente. ¿Qué acción deseas realizar?"],
       "rol": "Administrador"
     },
@@ -87,14 +87,14 @@
     },
     {
       "tag": "eliminar_docente",
-      "patterns": ["Eliminar docente registrado", "Eliminar docente","Cambiar estado de docente de activo a inactivo", "Quitar un docente del sistema", "Deshabilitar un registro"],
+      "patterns": ["Eliminar docente registrado", "Cambiar estado de docente de activo a inactivo", "Quitar un docente del sistema", "Deshabilitar un registro"],
       "responses": ["Puedes eliminar (deshabilitar) el docente creado desde la sección Gestión de usuarios donde te aparecerá una tabla con todos los docentes creados. Por favor, selecciona el docente que deseas eliminar, confirma su eliminación y el registro se eliminará del sistema, pero persistirá en una base de datos."],
       "rol": "Administrador"
     },
     {
       "tag": "problemas_plataforma",
       "patterns": ["Tengo un problema con la plataforma", "Algo no funciona", "Me da error"],
-      "responses": ["Lo siento. Por favor describe el problema y lo derivaré al administrador."],
+      "responses": ["Lo siento. Derivaré el problema al administrador o a soporte técnico."],
       "rol": "Todos"
     },
     {
@@ -114,20 +114,63 @@
       "tag": "tutorias_premium",
       "patterns": [
         "¿Qué son las tutorías premium?",
-        "Explicame que son las tutorías personalizadas",
+        "Explicame que son las tutorías privadas",
+        "Tutorias privadas"
+      ],
+      "responses": [
+        "Claro! Las tutorías premium son reuniones personalizadas que son acordadas por el docente y el estudiante. Son ideales para atención exclusiva con el docente de tu preferencia."
+      ],
+      "rol": "Estudiante"
+    },
+    {
+      "tag": "agendar_tutoria_premium",
+      "patterns": [
+        "Agendar tutoria premium",
+        "Acceder a tutoría premimum",
+        "Agendar una tutorías personalizada",
         "¿Cómo puedo agendar una tutoría premium?",
         "Quiero una tutoría personalizada",
-        "¿Las tutorías premium tienen costo?",
-        "¿Cómo accedo a una tutoría privada?",
-        "Quiero tutorías privadas",
+        "Quiero una tutoria privada con mi profesor",
         "Tutoría premium con profesor"
       ],
       "responses": [
-        "Las tutorías premium son clases personalizadas que tienen un costo adicional. Son ideales para atención exclusiva y temas específicos.",
-        "Las tutorías personalizadas te permiten tener una sesión exclusiva con tu docente para resolver dudas más a fondo.",
-        "Para agendar una tutoría premium, ve a Perfil > Tutorías Premium, selecciona un docente y elige el horario.",
-        "Sí, las tutorías premium tienen un costo extra debido a su atención personalizada.",
-        "Si quieres una tutoría privada, accede a la opción Tutorías Premium y agenda con tu docente preferido."
+        "Si quieres agendar una tutoría privada, ve a Perfil > Tutorías Premium, selecciona un docente y elige el horario."
+      ],
+      "rol": "Estudiante"
+    },
+    {
+      "tag": "costo_tutoria_premium",
+      "patterns": [
+        "Las tutorías premium tienen algún costo?",
+        "Cuanto debo pagar por una tutoria privada?"
+      ],
+      "responses": [
+        "Sí, las tutorías premium tienen un costo debido a su exclusividad. El precio es acordado por el docente."
+      ],
+      "rol": "Estudiante"
+    },
+    {
+      "tag": "pago_tutoria_premium",
+      "patterns": [
+        "Pago tutoria premium",
+        "Quiero cancelar el costo de la tutoria",
+        "Pago reunion personalizada",
+        "Debo pagar mediante la plataforma?"
+      ],
+      "responses": [
+        "Sí, para cancelar puedes hacerlo mediante la plataforma en la sección Tutorías Premium ----> Pago ---> Llenar los datos del formulario para hacer el pago."
+      ],
+      "rol": "Estudiante"
+    },
+    {
+      "tag": "pagos_realizados",
+      "patterns": [
+        "Pagos realizados",
+        "Transacciones hechas",
+        "Ver pagos hechos por mí"
+      ],
+      "responses": [
+        "Para ver los pagos que has realizado, ve a la sección Tutorías Premium y en la sección 'Transacciones' podrás ver la información sobre los pagos que has realizado."
       ],
       "rol": "Estudiante"
     },
