@@ -8,7 +8,7 @@
     },
     {
       "tag": "despedida",
-      "patterns": ["Adiós", "Nos vemos", "Hasta luego", "Chao", "Bye"],
+      "patterns": ["Adiós", "Nos vemos", "Cuidate", "Hasta luego", "Chao", "Bye"],
       "responses": ["Gracias por usar la plataforma! Cuídate!"],
       "rol": "Todos"
     },
@@ -153,9 +153,10 @@
       "tag": "pago_tutoria_premium",
       "patterns": [
         "Pago tutoria premium",
-        "Quiero cancelar el costo de la tutoria",
+        "Quiero pagar el costo de la tutoria",
         "Pago reunion personalizada",
-        "Debo pagar mediante la plataforma?"
+        "Debo pagar mediante la plataforma?",
+        "Como hago el pago de una tutoria premium?"
       ],
       "responses": [
         "Sí, para cancelar puedes hacerlo mediante la plataforma en la sección Tutorías Premium ----> Pago ---> Llenar los datos del formulario para hacer el pago."
