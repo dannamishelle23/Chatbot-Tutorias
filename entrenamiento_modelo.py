@@ -1,16 +1,15 @@
 import json
 import numpy as np
-import random
 import pickle
 import tensorflow as tf
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense, Dropout
-from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from nltk.stem import PorterStemmer
 import string
 
-#Cargar archivo intents.json
+# 1. Cargar intents.json
 with open("intents.json", encoding='utf-8') as file:
     data = json.load(file)
 
@@ -21,29 +20,27 @@ def tokenize(text):
     text = text.translate(str.maketrans('', '', string.punctuation))
     return text.split()
 
-#Listas para almacenar datos
 all_words = []
 tags = []
 xy = []
 
-# Procesar intents.json
 for intent in data["intents"]:
     tag = intent["tag"]
     tags.append(tag)
     for pattern in intent["patterns"]:
         words = tokenize(pattern)
-        all_words.extend(words)  # Acumular palabras para el vocabulario
-        xy.append((words, tag))  # Guardar pares (tokens, etiqueta)
+        all_words.extend(words)
+        xy.append((words, tag))
 
-# Filtrar palabras ignoradas
+#Preprocesamiento
 ignore_words = ["?", "!", ".", ","]
 all_words = [stemmer.stem(w) for w in all_words if w not in ignore_words]
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
 
-#Entrenar el modelo
-X_train = []
-y_train = []
+# Entrenamiento
+x = []
+y = []
 
 for pattern_words, tag in xy:
     bag = [0] * len(all_words)
@@ -52,21 +49,24 @@ for pattern_words, tag in xy:
         for i, w in enumerate(all_words):
             if w == sw:
                 bag[i] = 1
-    X_train.append(bag)
-
+    x.append(bag)
     label = tags.index(tag)
-    y_train.append(label)
+    y.append(label)
 
-X_train = np.array(X_train)
-y_train = np.array(y_train)
+x = np.array(x)
+y = np.array(y)
 
-#Guardar datos necesarios
+# 2. Dividir en entrenamiento/prueba
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.2, random_state=42, stratify=y)
+
+# 3. Guardar vocabulario y etiquetas
 with open("chatbot_data.pkl", "wb") as f:
-    pickle.dump((all_words, tags, X_train, y_train), f)
+    pickle.dump((all_words, tags, x, y), f)
 
-#Crear el modelo
+#4. Crear el modelo
 model = Sequential()
-model.add(Dense(128, input_shape=(len(X_train[0]),), activation='relu'))
+model.add(Dense(128, input_shape=(len(x[0]),), activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(64, activation='relu'))
 model.add(Dropout(0.5))
@@ -74,33 +74,47 @@ model.add(Dense(len(tags), activation='softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-#Entrenar el modelo
-history = model.fit(X_train, y_train, epochs=100, batch_size=8, verbose=1)
+# 5. Entrenar modelo
+history = model.fit(
+    x_train, y_train,
+    epochs=100,
+    batch_size=8,
+    validation_data=(x_test, y_test),
+    verbose=1
+)
 
-#Guardar el modelo
+# 6. Evaluar modelo
+train_loss, train_acc = model.evaluate(x_train, y_train, verbose=0)
+test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
+
+print(f"Precisión en entrenamiento: {train_acc:.2f}")
+print(f"Precisión en prueba: {test_acc:.2f}")
+
+# 7. Guardar modelo
 model.save("chatbot_modelo.keras")
-print("Modelo guardado con éxito: chatbot_modelo.keras")
+print("Modelo guardado como chatbot_modelo.keras")
 
-#Graficar precisión y pérdida
+# 8. Graficar curvas de entrenamiento
 plt.figure(figsize=(12, 4))
 
 plt.subplot(1, 2, 1)
-plt.plot(history.history['accuracy'], label='Precisión')
-plt.title('Precisión durante el entrenamiento')
+plt.plot(history.history['accuracy'], label='Entrenamiento')
+plt.plot(history.history['val_accuracy'], label='Validación')
+plt.title('Precisión')
 plt.xlabel('Épocas')
 plt.ylabel('Precisión')
 plt.legend()
 plt.grid(True)
 
 plt.subplot(1, 2, 2)
-plt.plot(history.history['loss'], label='Pérdida', color='red')
-plt.title('Pérdida durante el entrenamiento')
+plt.plot(history.history['loss'], label='Entrenamiento')
+plt.plot(history.history['val_loss'], label='Validación')
+plt.title('Pérdida')
 plt.xlabel('Épocas')
 plt.ylabel('Pérdida')
 plt.legend()
 plt.grid(True)
 
 plt.tight_layout()
-#Guardar las graficas en un archivo png
 plt.savefig('chatbot_entrenamiento.png')
 plt.show()
