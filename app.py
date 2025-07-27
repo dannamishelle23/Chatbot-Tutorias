@@ -12,12 +12,12 @@ import re
 
 st.set_page_config(layout="wide")
 
-#Cargar el archivo CSS
+# Cargar CSS personalizado
 with open("style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-#Mostrar el logo arriba
-st.image("images/logo_esfot.png", width=100)  # Puedes ajustar el ancho
+with st.container():
+    st.image("images/logo_esfot.png", width=120)
 
 #Carga modelo y datos
 model = tf.keras.models.load_model("chatbot_modelo.keras")
@@ -93,7 +93,7 @@ opciones_por_rol = {
         "Crear nuevo docente",
         "Ver docentes creados",
         "Actualizar la información del docente",
-        "Eliminar docente del sistema"
+        "Eliminar docente del sistema",
         "Actualizar perfil",
         "Actualizar contraseña",
     ]
@@ -154,8 +154,8 @@ elif st.session_state.estado == "chat":
 
     # Mostrar historial
     for remitente, texto in st.session_state.chat:
-        with st.chat_message("user" if remitente == "Tú" else "assistant"):
-            st.markdown(texto)
+        clase = "user-message" if remitente == "Tú" else "bot-message"
+        st.markdown(f"<div class='chat-bubble {clase}'>{texto}</div>", unsafe_allow_html=True)
 
     # Mostrar menú inicial solo una vez
     if st.session_state.mostrar_menu:
@@ -166,7 +166,7 @@ elif st.session_state.estado == "chat":
                 st.session_state.chat.append(("Tú", opcion))
                 respuesta = get_response(opcion, st.session_state.rol_usuario)
                 st.session_state.chat.append(("Bot", respuesta))
-                st.session_state.mostrar_menu = False  # Ocultar menú después de una selección
+                st.session_state.mostrar_menu = False  #Ocultar menú después de una selección
                 st.rerun()
 
     #Botón para volver a mostrar menú
