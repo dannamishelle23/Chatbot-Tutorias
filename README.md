@@ -22,6 +22,7 @@ chatbot_tutorias/
 - entrenamiento_modelo.py             #Entrenamiento del chatbot
 - style.css                           #Archivo para darle estilos a la aplicación en Streamlit
 - chatbot_modelo.keras                #Modelo entrenado
+- chatbot_data.pkl                    #Contiene los datos preprocesados que se usaron para entrenar el modelo. Es decir, guarda la información que transformaste desde intents.json a un formato que TensorFlow/Keras puede entender.
 - intents.json                        #Datos de entrenamiento (intenciones y respuestas)
 - usuarios.json                       #Guarda los usuarios registrados para el inicio de sesión
 - tutorias_guardadas.json             #Archivo .json de prueba para guardar las tutorias de los estudiantes
