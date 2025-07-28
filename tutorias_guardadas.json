@@ -1,0 +1,38 @@
+[
+    {
+        "correo": "joel.lopez@epn.edu.ec",
+        "docente": "Ing. Ximena Sanchez",
+        "materia": "Fundamentos de Matem\u00e1tica",
+        "horario": "Martes 14:00 - 15:00"
+    },
+    {
+        "correo": "danna.lopez@epn.edu.ec",
+        "docente": "Ing. Ximena Sanchez",
+        "materia": "Fundamentos de Matem\u00e1tica",
+        "horario": "Martes 14:00 - 15:00"
+    },
+    {
+        "correo": "susana.perez@epn.edu.ec",
+        "docente": "Ing. Walter Salas",
+        "materia": "F\u00edsica I",
+        "horario": "Viernes 13:00 - 14:00"
+    },
+    {
+        "correo": "susana.perez@epn.edu.ec",
+        "docente": "Ing. Ximena Sanchez",
+        "materia": "Fundamentos de Matem\u00e1tica",
+        "horario": "Martes 14:00 - 15:00"
+    },
+    {
+        "correo": "danna.lopez@epn.edu.ec",
+        "docente": "Ing. Ximena Sanchez",
+        "materia": "Fundamentos de Matem\u00e1tica",
+        "horario": "Lunes 10:00 - 11:00"
+    },
+    {
+        "correo": "susana.perez@epn.edu.ec",
+        "docente": "Ing. Walter Salas",
+        "materia": "F\u00edsica I",
+        "horario": "Lunes 09:00 - 10:00"
+    }
+]
