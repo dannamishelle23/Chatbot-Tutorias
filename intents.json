@@ -54,13 +54,6 @@
       "responses": ["Para hacerlo ve al módulo Ver citas ----> Citas agendadas -----> Cancelar cita -----> ¿Estás seguro de que deseas cancelar tu tutoría?"],
       "rol": "Estudiante"
     },
-
-    {
-      "tag": "ver_tutorias_docente",
-      "patterns": ["¿Qué tutorías tengo esta semana?", "Tutorías programadas para mí", "Agenda docente"],
-      "responses": ["Estas son tus tutorías programadas para esta semana. También puedes filtrarlas por día."],
-      "rol": "Docente"
-    },
     {
       "tag": "gestion_docentes",
       "patterns": ["Gestión de docentes", "Quiero administrar los docentes", "Como manejo los docentes?"],
@@ -104,9 +97,9 @@
       "rol": "Estudiante"
     },
     {
-      "tag": "consultar_horario_personal",
+      "tag": "consultar_tutorias_docente",
       "patterns": ["¿Qué tutorías tengo mañana?", "Tutorías programadas para mí", "Mi horario personal", "Tutorías de esta semana"],
-      "responses": ["Tienes una tutoría programada el viernes a las 10:00 AM con el estudiante Saul Pérez.", "Tienes una tutoría programada el lunes de 14:00-15:00 con el/la estudiante Danna Lopez."],
+      "responses": ["Tienes una tutoría programada el viernes a las 10:00 AM con el estudiante Saul Pérez.","Tutoria mañana a las 14:00 pm con el/la estudiante Susana Perez",  "Tienes una tutoría programada el lunes de 14:00-15:00 con el/la estudiante Danna Lopez."],
       "rol": "Docente"
     },
 
