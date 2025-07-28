@@ -20,6 +20,8 @@ chatbot_tutorias/
 - app.py                              #Interfaz en Streamlit
   
 - tutorias.py                         #Codigo para guardar las tutorias en un archivo llamado tutorias.json y llamarlo en app.py
+
+- autenticacion.py                    #Codigo para guardar y registrar usuarios en usuarios.json
   
 - entrenamiento_modelo.py             #Entrenamiento del chatbot
   
