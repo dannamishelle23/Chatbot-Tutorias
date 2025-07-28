@@ -2,8 +2,7 @@
 import autenticacion  
 
 #Importar el archivo de tutorias.py
-from tutorias import guardar_tutoria, obtener_tutorias
-
+from tutorias import guardar_tutoria
 #Importar las librerías necesarias
 import streamlit as st
 import json
@@ -51,7 +50,9 @@ def agendar_tutoria():
     docentes = [
         {"nombre": "Ing. Ximena Sanchez", "materia": "Fundamentos de Matemática",
          "horarios": ["Lunes 10:00 - 11:00", "Martes 14:00 - 15:00"]},
-        {"nombre": "Ing. Pedro Salinas", "materia": "Física",
+         {"nombre": "Ing. Alan Cuenca", "materia": "Introduccion a las TIC",
+         "horarios": ["Lunes 10:00 - 13:00", "Viernes 15:00 - 16:00"]},
+        {"nombre": "Ing. Carlos Yunga", "materia": "Física",
          "horarios": ["Miércoles 08:00 - 09:00", "Viernes 09:00 - 10:00"]},
         {"nombre": "Ing. Edgar Lincango", "materia": "Geometría",
          "horarios": ["Lunes 13:00 - 14:00", "Jueves 10:00 - 11:00"]},
@@ -63,6 +64,8 @@ def agendar_tutoria():
          "horarios": ["Lunes 09:00 - 10:00", "Viernes 13:00 - 14:00"]},
         {"nombre": "Ing. Gabriela Cevallos", "materia": "Introducción a las TIC",
          "horarios": ["Martes 11:00 - 12:00", "Jueves 09:00 - 10:00"]},
+         {"nombre": "Ing. Ana Torres", "materia": "Estadística",
+         "horarios": ["Miercoles 09:00 - 11:00", "Jueves 10:00 - 11:00"]},
     ]
 
     st.subheader("📚 Agendamiento de Tutoría Académica")
@@ -99,53 +102,33 @@ def agendar_tutoria():
     st.session_state.horario_seleccionado = seleccion_horario
 
     if st.button("Agendar tutoría"):
-       # Guardamos la confirmación y mostramos resumen
+        guardar_tutoria(st.session_state.correo_usuario, docente['nombre'], docente['materia'], st.session_state.horario_seleccionado)
         st.session_state.tutoria_agendada = True
         st.success("¡Tutoría agendada con éxito!")
-        guardar_tutoria(st.session_state.correo_usuario, docente["nombre"], docente["materia"], seleccion_horario)
-        st.markdown(f"Docente: {docente['nombre']}")
-        st.markdown(f"Materia: {docente['materia']}")
-        st.markdown(f"Horario: {seleccion_horario}")
-        st.markdown("\u00bfDeseas ayuda en algo más?")
+        st.rerun()
 
-        if st.button("Volver al menú"):
-            st.session_state.tutoria_agendada = False
-            st.session_state.mostrar_agendamiento = False
-            st.session_state.mostrar_menu = True
-            st.rerun()
-
-    elif "tutoria_agendada" in st.session_state and st.session_state.tutoria_agendada:
-        docente = next(d for d in docentes if d["nombre"] == st.session_state.docente_seleccionado)
-        st.success("¡Tutoría ya está agendada!")
+    #Mostrar resumen si la tutoría está agendada
+    if st.session_state.get("tutoria_agendada"):
         st.markdown(f"Docente: {docente['nombre']}")
         st.markdown(f"Materia: {docente['materia']}")
         st.markdown(f"Horario: {st.session_state.horario_seleccionado}")
-        st.markdown("\u00bfDeseas ayuda en algo más?")
+        st.text("¿Deseas ayuda en algo más?")
 
-        if st.button("Volver al menú"):
+    #Mostrar un solo botón "Volver al menú" si se está agendando o ya agendó
+    if st.session_state.get("mostrar_agendamiento") or st.session_state.get("tutoria_agendada"):
+        if st.button("Volver al menú", key="volver_menu"):
             st.session_state.tutoria_agendada = False
             st.session_state.mostrar_agendamiento = False
             st.session_state.mostrar_menu = True
             st.rerun()
-
-    else:
-        st.info("Selecciona un docente y horario para agendar tu tutoría.")
 
 def get_response(msg, rol_usuario):
     if msg.strip().lower() in ["crear una tutoría", "agendar tutoría", "nueva tutoría"]:
         st.session_state.mostrar_agendamiento = True
-        return "Claro, vamos a agendar una tutoría. Selecciona un docente y luego el horario."
+        st.session_state.tutoria_agendada = False  #Permite agendar nuevamente una tutoría
+        return "Perfecto, te ayudaré a reservar una tutoría de acuerdo a la disponibilidad de tu docente. ¿Con qué profesor quieres agendar la tutoría?"
 
-    elif msg.strip().lower() == "ver tutorías agendadas":
-        tutorias = obtener_tutorias(st.session_state.correo_usuario)
-        if tutorias:
-            texto = "Estas son tus tutorías agendadas:\n\n"
-            for t in tutorias:
-                texto += f"- Docente: {t['docente']}, Materia: {t['materia']}, Horario: {t['horario']}\n"
-            return texto
-        else:
-            return "No tienes tutorías agendadas aún."
-        
+    #Manejo del intent clásico con modelo
     bow = bag_of_words(msg)
     result = model.predict(np.array([bow]))[0]
     idx = np.argmax(result)
@@ -264,7 +247,7 @@ elif st.session_state.estado == "chat":
     if st.session_state.get("mostrar_agendamiento"):
         agendar_tutoria()
     #Evita que se muestre repetidamente una vez hecho
-    if "tutoria_agendada" in st.session_state and st.session_state.tutoria_agendada:
+    if st.session_state.get("tutoria_agendada"):
         st.session_state.mostrar_agendamiento = False
 
     # Mostrar menú inicial solo una vez
@@ -276,14 +259,14 @@ elif st.session_state.estado == "chat":
                 st.session_state.chat.append(("Tú", opcion))
                 respuesta = get_response(opcion, st.session_state.rol_usuario)
                 st.session_state.chat.append(("Bot", respuesta))
-                st.session_state.mostrar_menu = False  #Ocultar menú después de una selección
+                st.session_state.mostrar_menu = False
                 st.rerun()
-
-    #Botón para volver a mostrar menú
-    if st.button("Mostrar menú"):
-        st.session_state.mostrar_menu = True
-        st.session_state.chat.append(("Bot", "¿Qué opción deseas del menú?"))
-        st.rerun()
+    else:
+        #Solo mostrar este botón si el menú NO está visible
+        if st.button("Mostrar menú"):
+            st.session_state.mostrar_menu = True
+            st.session_state.chat.append(("Bot", "¿Qué opción deseas del menú?"))
+            st.rerun()
 
     #Input del usuario
     mensaje_usuario = st.chat_input("Escribe tu mensaje...")
