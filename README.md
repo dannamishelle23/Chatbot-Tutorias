@@ -72,3 +72,10 @@ Nota: Para instalar tensorflow, se necesita Python 3.9 - 3.10 - 3.11 o 3.12, dad
 <img width="730" height="128" alt="image" src="https://github.com/user-attachments/assets/56ca9449-dd6a-4336-8082-50c0dd837bef" />
 
 Esto indica que Streamlit está corriendo en el puerto 8501
+
+### 7. Visualización de la interfaz del chatbot con Streamlit
+
+<img width="1319" height="556" alt="image" src="https://github.com/user-attachments/assets/97a24cd2-fd64-4b8d-a8f5-dd46a71dcd7b" />
+
+Cuando el usuario se registra, le pide su correo institucional, una contraseña y el rol con el que quiere acceder. 
+Cabe aclarar que, la funcionalidad de registro está habilitada solo para estudiantes y docentes.
