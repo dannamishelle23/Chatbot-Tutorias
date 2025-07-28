@@ -2,7 +2,7 @@
   "intents": [
     {
       "tag": "saludo",
-      "patterns": ["Hola", "Quien eres?", "Buenos días", "Buenas tardes", "Qué tal", "Hey"],
+      "patterns": ["Hola","Saludos!", "Quien eres?", "Buenos días", "Buenas tardes", "Qué tal", "Hey"],
       "responses": ["Soy un bot diseñado para asistir a estudiantes de la ESFOT. ¿En qué puedo ayudarte?"],
       "rol": "Todos"
     },
@@ -39,7 +39,7 @@
     {
       "tag": "agendar_tutoria",
       "patterns": ["Agendar tutoría", "Crear una tutoría", "Quiero una tutoría", "Reservar cita"],
-      "responses": ["Perfecto. ¿Sobre qué materia necesitas tutoría?"],
+      "responses": ["Perfecto, te ayudaré a reservar una tutoría de acuerdo a la disponibilidad de tu docente. ¿Con qué profesor quieres agendar la tutoría?"],
       "rol": "Estudiante"
     },
     {
@@ -50,8 +50,8 @@
     },
     {
       "tag": "cancelar_tutoria",
-      "patterns": ["Cancelar tutoría", "No podré asistir", "Anular cita"],
-      "responses": ["¿Estás seguro de que deseas cancelar tu tutoría?"],
+      "patterns": ["Cancelar tutoría", "Cómo anular una tutoría?", "No podré asistir", "Anular cita"],
+      "responses": ["Para hacerlo ve al módulo Ver citas ----> Citas agendadas -----> Cancelar cita -----> ¿Estás seguro de que deseas cancelar tu tutoría?"],
       "rol": "Estudiante"
     },
 
@@ -93,7 +93,7 @@
     },
     {
       "tag": "problemas_plataforma",
-      "patterns": ["Tengo un problema con la plataforma", "Algo no funciona", "Me da error"],
+      "patterns": ["Tengo un problema con la plataforma", "No vale", "Algo no funciona", "Me da error"],
       "responses": ["Lo siento. Derivaré el problema al administrador o a soporte técnico."],
       "rol": "Todos"
     },
@@ -105,8 +105,8 @@
     },
     {
       "tag": "consultar_horario_personal",
-      "patterns": ["¿Qué tutorías tengo mañana?", "Mi horario personal", "Tutorías de esta semana"],
-      "responses": ["Estas son tus tutorías programadas para los próximos días."],
+      "patterns": ["¿Qué tutorías tengo mañana?", "Tutorías programadas para mí", "Mi horario personal", "Tutorías de esta semana"],
+      "responses": ["Tienes una tutoría programada el viernes a las 10:00 AM con el estudiante Saul Pérez.", "Tienes una tutoría programada el lunes de 14:00-15:00 con el/la estudiante Danna Lopez."],
       "rol": "Docente"
     },
 
@@ -114,6 +114,10 @@
       "tag": "tutorias_premium",
       "patterns": [
         "¿Qué son las tutorías premium?",
+        "Que es una tutoria premium",
+        "Deseo informacion sobre las tutorias premium",
+        "Que son las tutorias privadas?",
+        "De que tratan las tutorias premium?",
         "Explicame que son las tutorías privadas",
         "Tutorias privadas"
       ],
@@ -177,7 +181,7 @@
     },
   {
     "tag": "si",
-    "patterns": ["Sí", "Si", "Si por favor", "Claro", "Por supuesto", "Ok", "Está bien", "Afirmativo"],
+    "patterns": ["Sí","Yes", "Si porfa", "si", "Si", "Si por favor", "Claro", "Por supuesto", "Ok", "Está bien", "Afirmativo"],
     "responses": ["Entendido. Procederé."],
     "rol": "Todos"
   },
