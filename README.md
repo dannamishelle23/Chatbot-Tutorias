@@ -29,17 +29,13 @@ chatbot_tutorias/
   
 - chatbot_modelo.keras                #Modelo entrenado
   
-- chatbot_data.pkl                    #Contiene los datos preprocesados que se usaron para entrenar el modelo. Es decir, guarda la información que se transformó desde intents.json a un formato que TensorFlow/Keras puede entender.
+- chatbot_data.pkl                    #Contiene los datos preprocesados que se usaron para entrenar el modelo. Es decir, guarda la información que se transformó desde intents.json a un formato que TensorFlow/Keras puede entender. Este archivo guarda: all_words: vocabulario final (ya tokenizado y con stemming), tags: lista de las etiquetas (intents), x: las bolsas de palabras de los patrones (features), y: las etiquetas numéricas correspondientes.
   
 - intents.json                        #Datos de entrenamiento (intenciones y respuestas)
   
 - usuarios.json                       #Guarda los usuarios registrados para el inicio de sesión
   
 - tutorias_guardadas.json             #Archivo .json de prueba para guardar las tutorias de los estudiantes
-  
-- Tokenizer.pickle                    #Tokenizador de texto (no se sube al repositorio, se genera automaticamente)
-  
-- labels.pickle                       #Etiquetas codificadas (no se sube al repositorio, se genera automaticamente)
   
 - requirements.txt                    #Paquetes necesarios
   
@@ -79,8 +75,8 @@ Esto se hizo al terminar de instalar todo lo necesario para el proyecto con el p
 ### 5. Ejecutar el archivo entrenamiento_modelo.py 
 
 - Ejecutar el comando: python entrenamiento_modelo.py
-- Una vez entrenado el modelo, se recorren todas las épocas mostrando la precisión y la pérdida. Además, se generan las gráficas.
-- Al final se guardará el modelo entrenado en formato .keras y se generan automáticamente dos archivos: tokenizer.pickle y labels.pickle
+- Una vez entrenado el modelo, se recorren todas las épocas mostrando la precisión y la pérdida. Además, se generan las gráficas en un archivo png y los datos de precisión y pérdida en un CSV.
+- Al final se guardará el modelo entrenado en formato .keras y se generan automáticamente el archivo: chatbot_data.pkl
 
 <img width="615" height="85" alt="image" src="https://github.com/user-attachments/assets/a383af08-6b88-4567-a34c-5447d84c8f0c" />
 
