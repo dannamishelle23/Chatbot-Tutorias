@@ -18,18 +18,31 @@ de gestión de tutorías de la ESFOT.
 ## 📁 Estructura del Proyecto
 chatbot_tutorias/
 - app.py                              #Interfaz en Streamlit
+  
 - tutorias.py                         #Codigo para guardar las tutorias en un archivo llamado tutorias.json y llamarlo en app.py
+  
 - entrenamiento_modelo.py             #Entrenamiento del chatbot
+  
 - style.css                           #Archivo para darle estilos a la aplicación en Streamlit
+  
 - chatbot_modelo.keras                #Modelo entrenado
-- chatbot_data.pkl                    #Contiene los datos preprocesados que se usaron para entrenar el modelo. Es decir, guarda la información que transformaste desde intents.json a un formato que TensorFlow/Keras puede entender.
+  
+- chatbot_data.pkl                    #Contiene los datos preprocesados que se usaron para entrenar el modelo. Es decir, guarda la información que se transformó desde intents.json a un formato que TensorFlow/Keras puede entender.
+  
 - intents.json                        #Datos de entrenamiento (intenciones y respuestas)
+  
 - usuarios.json                       #Guarda los usuarios registrados para el inicio de sesión
+  
 - tutorias_guardadas.json             #Archivo .json de prueba para guardar las tutorias de los estudiantes
+  
 - Tokenizer.pickle                    #Tokenizador de texto (no se sube al repositorio, se genera automaticamente)
+  
 - labels.pickle                       #Etiquetas codificadas (no se sube al repositorio, se genera automaticamente)
-- requirements.txt                    #Paquetes necesarios 
+  
+- requirements.txt                    #Paquetes necesarios
+  
 - .gitignore                          #Ignora entorno virtual y archivos pesados
+  
 - chatbot_env/                        #(No se sube al repositorio, es el entorno virtual donde se ejecuta la aplicación)
 
 Adicionalmente, dentro del proyecto se crea una carpeta llamada images donde se guarda la imagen de logo para la página.
