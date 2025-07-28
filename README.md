@@ -44,8 +44,7 @@ Adicionalmente, dentro del proyecto se crea una carpeta llamada images donde se 
 
 Para instalar tensorflow, se necesita Python 3.9 - 3.10 - 3.11 o 3.12, dado que Tensorflow no es compatible con Python 3.13
 
-Si se cuenta con Python 3.12 o versiones inferiores, se ejecuta el siguiente comando para crear el entorno virtual:
-   ---> python -m venv chatbot_env
+Si se cuenta con Python 3.12 o versiones inferiores, se ejecuta el siguiente comando para crear el entorno virtual: python -m venv chatbot_env
 
 ### 3. Activar el entorno virtual
 
@@ -54,7 +53,7 @@ Si se cuenta con Python 3.12 o versiones inferiores, se ejecuta el siguiente com
   
 <img width="538" height="58" alt="image" src="https://github.com/user-attachments/assets/a23c03ce-c02f-4e4e-bc09-2f70cd215176" />
 
-Para instalar las dependencias que necesita el proyecto, hemos creado un archivo llamado requirements.txt con el propósito de que, cuando el proyecto se descargue en otro conputador, no se tengan que instalar todas las dependencias de forma manual.
+Para instalar las dependencias que necesita el proyecto, hemos creado un archivo llamado requirements.txt con el propósito de que, cuando el proyecto se descargue en otro computador, no se tengan que instalar todas las dependencias de forma manual.
 Esto se hizo al terminar de instalar todo lo necesario para el proyecto con el paquete PIP. Al final, ejecutamos el comando: pip freeze > requirements.txt 
 
 ### 4. Instalar dependencias
