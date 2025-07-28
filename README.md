@@ -75,7 +75,22 @@ Esto indica que Streamlit está corriendo en el puerto 8501
 
 ### 7. Visualización de la interfaz del chatbot con Streamlit
 
+## 7.1 PANTALLA DE LOGIN 
+
 <img width="1319" height="556" alt="image" src="https://github.com/user-attachments/assets/97a24cd2-fd64-4b8d-a8f5-dd46a71dcd7b" />
 
-Cuando el usuario se registra, le pide su correo institucional, una contraseña y el rol con el que quiere acceder. 
-Cabe aclarar que, la funcionalidad de registro está habilitada solo para estudiantes y docentes.
+Se hicieron validaciones para que el usuario ingrese con las credenciales guardadas en la BDD (archivo usuarios.json)
+
+## 7.2 PANTALLA DE REGISTRO
+
+Cuando el usuario se registra, le pide su correo institucional, una contraseña y el rol con el que quiere acceder. Una vez que se registra, sus datos se almacenan en usuarios.json
+
+<img width="1318" height="552" alt="image" src="https://github.com/user-attachments/assets/922d9db0-514f-4ed8-abbf-2af19a8fed1f" />
+
+## Nota: La funcionalidad de registro está habilitada solo para estudiantes y docentes.
+
+## 7.3 PANTALLA DEL CHATBOT
+
+<img width="1264" height="528" alt="image" src="https://github.com/user-attachments/assets/3b8c0fba-037b-49d2-95dc-6a6c202913b8" />
+
+El chatbot tiene programado un saludo automático con un menú de opciones para que el usuario se familiarice más con la plataforma.
