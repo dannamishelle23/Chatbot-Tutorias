@@ -24,6 +24,7 @@ chatbot_tutorias/
 - chatbot_modelo.keras                #Modelo entrenado
 - intents.json                        #Datos de entrenamiento (intenciones y respuestas)
 - usuarios.json                       #Guarda los usuarios registrados para el inicio de sesión
+- tutorias_guardadas.json             #Archivo .json de prueba para guardar las tutorias de los estudiantes
 - Tokenizer.pickle                    #Tokenizador de texto (no se sube al repositorio, se genera automaticamente)
 - labels.pickle                       #Etiquetas codificadas (no se sube al repositorio, se genera automaticamente)
 - requirements.txt                    #Paquetes necesarios 
