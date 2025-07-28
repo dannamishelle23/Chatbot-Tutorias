@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from nltk.stem import PorterStemmer
 
-#Fijar la semilla para reproducibilidad
+#Fijar la semilla para reproducibilidad: Obtener los mismos resultados cada vez que se entrena el modelo
 seed = 42
 random.seed(seed)
 np.random.seed(seed)
@@ -96,7 +96,7 @@ for pattern_words, tag in xy:
 x = np.array(x)
 y = np.array(y)
 
-#Mostrar cantidad de ejemplos por intent
+#Mostrar cantidad de ejemplos por intent para aplicar data augmentation
 for intent in data["intents"]:
     print(f"Intent: {intent['tag']}, ejemplos: {len(intent['patterns'])}")
 
@@ -104,11 +104,11 @@ for intent in data["intents"]:
 x_train, x_test, y_train, y_test = train_test_split(
     x, y, test_size=0.2, random_state=seed, stratify=y)
 
-#6. Guardar vocabulario y etiquetas
+#6. Guardar vocabulario y etiquetas en un archivo .pkl que sera utilizado en la interfaz
 with open("chatbot_data.pkl", "wb") as f:
     pickle.dump((all_words, tags, x, y), f)
 
-#7. Crear modelo
+#7. Creacion y compilacion del modelo
 model = Sequential()
 model.add(Dense(128, input_shape=(len(x[0]),), activation='relu'))
 model.add(Dropout(0.5))
@@ -151,6 +151,7 @@ print("Archivo CSV guardado con éxito")
 #12. Graficar curvas
 plt.figure(figsize=(12, 4))
 
+#Visualizar el aprendizaje del modelo
 plt.subplot(1, 2, 1)
 plt.plot(history.history['accuracy'], label='Entrenamiento')
 plt.plot(history.history['val_accuracy'], label='Validación')
@@ -169,6 +170,7 @@ plt.ylabel('Pérdida')
 plt.legend()
 plt.grid(True)
 
+#Guardar la grafica en un archivo .png y mostrar
 plt.tight_layout()
 print("Imagen guardada con éxito como: chatbot_entrenamiento.png")
 plt.savefig('chatbot_entrenamiento.png')
