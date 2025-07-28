@@ -96,19 +96,19 @@ for pattern_words, tag in xy:
 x = np.array(x)
 y = np.array(y)
 
-# Mostrar cantidad de ejemplos por intent
+#Mostrar cantidad de ejemplos por intent
 for intent in data["intents"]:
     print(f"Intent: {intent['tag']}, ejemplos: {len(intent['patterns'])}")
 
-# 5. Dividir datos en entrenamiento y prueba
+#5. Dividir datos en entrenamiento y prueba
 x_train, x_test, y_train, y_test = train_test_split(
     x, y, test_size=0.2, random_state=seed, stratify=y)
 
-# 6. Guardar vocabulario y etiquetas
+#6. Guardar vocabulario y etiquetas
 with open("chatbot_data.pkl", "wb") as f:
     pickle.dump((all_words, tags, x, y), f)
 
-# 7. Crear modelo
+#7. Crear modelo
 model = Sequential()
 model.add(Dense(128, input_shape=(len(x[0]),), activation='relu'))
 model.add(Dropout(0.5))
@@ -143,9 +143,6 @@ df_resultados = pd.DataFrame(history.history)
 
 #Agregar la columna de época
 df_resultados["epoch"] = df_resultados.index + 1
-
-#Mostrar tabla en consola o exportar a CSV/Excel
-print(df_resultados)
 
 #Guardar como CSV
 df_resultados.to_csv("resultados_entrenamiento.csv", index=False)
